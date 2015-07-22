@@ -3,8 +3,11 @@
 angular.module('fcclinkterestApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      title: 'Home',
+      link: '/'
+    }, {
+      title: 'Profile',
+      link: '/profile/' + Auth.getCurrentUser()._id
     }];
 
     $scope.isCollapsed = true;

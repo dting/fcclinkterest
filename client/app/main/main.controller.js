@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('fcclinkterestApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $window, Auth) {
+    $scope.isLoggedIn = Auth.isLoggedIn;
+
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
@@ -18,5 +20,9 @@ angular.module('fcclinkterestApp')
 
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
+    };
+
+    $scope.loginOauth = function(provider) {
+      $window.location.href = '/auth/' + provider;
     };
   });
