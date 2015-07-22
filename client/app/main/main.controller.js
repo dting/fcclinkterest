@@ -22,7 +22,5 @@ angular.module('fcclinkterestApp')
       $http.delete('/api/things/' + thing._id);
     };
 
-    $scope.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
-    };
+    $scope.loginOauth = Auth.login;
   });
