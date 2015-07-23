@@ -11,15 +11,11 @@
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
-        <li>
-          <a href="" ng-click="random()">Explore!</a>
-        </li>
+        <li><a ui-sref="main">Home</a></li>
+        <li><a ui-sref="profile({id: getCurrentUser()._id})" ng-if="isLoggedIn()">Profile</a></li>
+        <li><a href="" ng-click="random()">Explore!</a></li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
-
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}">
           <a href="" ng-click="logout()"><i class="fa fa-sign-out"></i> Logout</a>
@@ -28,7 +24,6 @@
           <a href="" ng-click="loginOauth('twitter')"><i class="fa fa-twitter"></i> Sign in with Twitter</a>
         </li>
       </ul>
-
     </div>
   </div>
 </div>
