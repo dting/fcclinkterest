@@ -3,7 +3,9 @@
 angular.module('fcclinkterestApp').controller('MainCtrl',
     function($scope, Auth, User) {
       $scope.link = {};
-      $scope.links = Auth.getCurrentUser().links;
+      Auth.isLoggedInAsync(function(isLoggedIn) {
+        $scope.links = isLoggedIn ? Auth.getCurrentUser().links : undefined;
+      });
       $scope.isLoggedIn = Auth.isLoggedIn;
       $scope.loginOauth = Auth.login;
 
