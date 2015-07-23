@@ -1,26 +1,17 @@
 'use strict';
 
-angular.module('fcclinkterestApp')
-  .controller('MainCtrl', function ($scope, $http, $window, Auth) {
-    $scope.isLoggedIn = Auth.isLoggedIn;
+angular.module('fcclinkterestApp').controller('MainCtrl',
+    function($scope, Auth, User) {
+      $scope.link = {};
+      $scope.links = Auth.getCurrentUser().links;
+      $scope.isLoggedIn = Auth.isLoggedIn;
+      $scope.loginOauth = Auth.login;
 
-    $scope.awesomeThings = [];
-
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+      $scope.add = function() {
+        if (!$scope.link.url) return;
+        User.add({url:$scope.link.url}).$promise.then(function(err, res) {
+          console.log(err);
+          console.log(res);
+        });
+      };
     });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.loginOauth = Auth.login;
-  });

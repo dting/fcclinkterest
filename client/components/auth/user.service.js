@@ -2,14 +2,21 @@
 
 angular.module('fcclinkterestApp')
   .factory('User', function ($resource) {
-    return $resource('/api/users/:id/:controller', {
+    return $resource('/api/users/:controller/:id', {
       id: '@_id'
     },
     {
-      changePassword: {
+      add: {
         method: 'PUT',
         params: {
-          controller:'password'
+          controller:'add'
+        }
+      },
+      remove: {
+        method: 'DELETE',
+        params: {
+          controller:'remove',
+          id: '@_url'
         }
       },
       get: {

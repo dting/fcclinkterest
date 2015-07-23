@@ -27,12 +27,20 @@
       <form name="imageLinkForm">
         <div class="input-group">
           <label class="sr-only" for="imageLinkInput">Link to image.</label>
-          <input type="text" class="form-control" id="imageLinkInput" placeholder="Link to image.">
+          <input type="text" ng-model="link.url" class="form-control" id="imageLinkInput" placeholder="Link to image.">
           <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">Upload</button>
+            <button class="btn btn-primary" type="button" ng-click="add()">Upload</button>
           </span>
         </div>
       </form>
+    </div>
+    {{ link }}
+    <div class="row">
+      <div masonry>
+        <div class="masonry-brick" ng-repeat="brick in bricks">
+          <img ng-src="{{ brick.src }}" alt="A masonry brick">
+        </div>
+      </div>
     </div>
   </div>
 </section>
