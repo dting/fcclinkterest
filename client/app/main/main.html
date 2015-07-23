@@ -9,9 +9,12 @@
             <h1 class="brand">Linkterest</h1>
           </div>
           <div class="panel-body">
-            <div>
-              <a class="btn btn-block btn-social btn-twitter" ng-click="loginOauth('twitter')">
+            <div class="splash-buttons">
+              <a class="btn btn-social btn-twitter" ng-click="loginOauth('twitter')">
                 <i class="fa fa-twitter"></i> Sign in with Twitter
+              </a>
+              <a class="btn btn-random btn-warning" ng-click="random()">
+                Explore!
               </a>
             </div>
           </div>
@@ -37,6 +40,7 @@
     <div class="row" ng-if="!links.length">
       <div class="jumbotron text-center nothing">
         <h1>Nothing here yet!</h1>
+
         <p>Add some links above.</p>
       </div>
     </div>

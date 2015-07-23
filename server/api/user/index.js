@@ -9,6 +9,7 @@ var router = express.Router();
 
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.get('/profile/:id', controller.profile);
+router.get('/random', controller.randomProfile);
 router.put('/add', auth.isAuthenticated(), controller.add);
 router.delete('/remove/:id', auth.isAuthenticated(), controller.remove);
 

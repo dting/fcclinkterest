@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fcclinkterestApp')
-    .controller('NavbarCtrl', function($scope, $location, Auth) {
+    .controller('NavbarCtrl', function($scope, $location, Auth, $state, User) {
       $scope.menu = [
         {
           title: 'Home',
@@ -26,5 +26,11 @@ angular.module('fcclinkterestApp')
 
       $scope.isActive = function(route) {
         return route === $location.path();
+      };
+
+      $scope.random = function() {
+        User.random({}, function(res) {
+          $state.go('profile', {id: res._id});
+        });
       };
     });

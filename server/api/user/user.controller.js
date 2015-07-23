@@ -22,6 +22,20 @@ exports.profile = function(req, res) {
   });
 };
 
+exports.randomProfile = function(req, res) {
+  // http://stackoverflow.com/a/28331323/635411
+  User.count().exec(function(err, count) {
+    var random = Math.floor(Math.random() * count);
+    User.findOne()
+        .select('_id')
+        .skip(random)
+        .exec(function(findErr, user) {
+          if (err) return res.status(404).send(findErr);
+          res.status(200).json(user);
+        });
+  });
+};
+
 /**
  * Removes a link from an authenticated user.
  */
