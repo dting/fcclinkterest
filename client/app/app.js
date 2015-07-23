@@ -6,7 +6,7 @@ angular.module('fcclinkterestApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'wu.masonry'
+  'masonry'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -48,7 +48,7 @@ angular.module('fcclinkterestApp', [
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           event.preventDefault();
-          $location.path('/login');
+          $location.path('/');
         }
       });
     });

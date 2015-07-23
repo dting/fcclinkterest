@@ -1,4 +1,24 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="col-md-12">
-This is the profile view.
+<div class="container" ng-if="userName">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3>{{userName}}</h3>
+    </div>
+  </div>
+  <div masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".grid-item", "gutter" : 10, "columnWidth" : 370, "isFitWidth": true}'
+      class="grid">
+    <div masonry-tile class="grid-item" ng-repeat="link in links">
+      <img ng-src="{{ link.url }}"
+          alt="{{ link.url }}"
+          class="item"
+          onError="this.onerror=null;this.src='/assets/images/missing.png';">
+    </div>
+  </div>
+</div>
+<div class="container" ng-if="notFound">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3>No user found for this URL.</h3>
+    </div>
+  </div>
 </div>

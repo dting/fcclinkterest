@@ -15,9 +15,9 @@ var validationError = function(res, err) {
  * restriction: 'admin'
  */
 exports.profile = function(req, res) {
-  User.findById(req.params.id, function(err, user) {
-    if (err) return res.status(500).send(err);
-    res.status(200).json(user.links);
+  User.findById(req.params.id).select('name links').exec(function(err, user) {
+    if (err) return res.status(404).send(err);
+    res.status(200).json(user);
   });
 };
 
