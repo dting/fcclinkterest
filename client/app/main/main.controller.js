@@ -10,6 +10,7 @@ angular.module('fcclinkterestApp').controller('MainCtrl',
       $scope.add = function() {
         if (!$scope.link.url) return;
         User.add({}, {url:$scope.link.url}, function(res) {
+          $scope.link.url = '';
           $scope.links.push(res);
         });
       };

@@ -1,8 +1,10 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container" ng-if="userName">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h3>{{userName}}</h3>
+<section ng-if="userName">
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3>{{userName}}</h3>
+      </div>
     </div>
   </div>
   <div masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".grid-item", "gutter" : 10, "columnWidth" : 370, "isFitWidth": true}'
@@ -14,7 +16,8 @@
           onError="this.onerror=null;this.src='/assets/images/missing.png';">
     </div>
   </div>
-</div>
+</section>
+
 <div class="container" ng-if="notFound">
   <div class="row">
     <div class="col-md-12 text-center">
