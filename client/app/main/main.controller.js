@@ -8,11 +8,12 @@ angular.module('fcclinkterestApp').controller('MainCtrl',
       $scope.loginOauth = Auth.login;
 
       $scope.add = function() {
-        if (!$scope.link.url) return;
-        User.add({}, {url:$scope.link.url}, function(res) {
-          $scope.link.url = '';
-          $scope.links.push(res);
-        });
+        if ($scope.link.url) {
+          User.add({}, {url:$scope.link.url}, function(res) {
+            $scope.link.url = '';
+            $scope.links.push(res);
+          });
+        }
       };
 
       $scope.remove = function(link) {
@@ -20,5 +21,5 @@ angular.module('fcclinkterestApp').controller('MainCtrl',
         User.remove({}, link).$promise.then(function() {
           _.remove($scope.links, link);
         });
-      }
+      };
     });

@@ -29,7 +29,7 @@ app.controller('ProfileCtrl', function($scope, $stateParams, $http,
     }
   });
 
-  $scope.$on("$destroy", function() {
+  $scope.$on('$destroy', function() {
     w.unbind('resize');
   });
 });
