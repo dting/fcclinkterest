@@ -34,10 +34,23 @@
         </div>
       </form>
     </div>
+    <div class="row" ng-if="!links.length">
+      <div class="jumbotron text-center nothing">
+        <h1>Nothing here yet!</h1>
+        <p>Add some links above.</p>
+      </div>
+    </div>
   </div>
-  <div masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".grid-item", "gutter" : 10, "columnWidth" : 370, "isFitWidth": true}' class="grid">
+  <div masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".grid-item", "gutter" : 10, "columnWidth" : 370, "isFitWidth": true}'
+      class="grid">
     <div masonry-tile class="grid-item" ng-repeat="link in links">
-      <img ng-src="{{ link.url }}" alt="{{ link.url }}" class="item" onError="this.onerror=null;this.src='/assets/images/missing.png';" >
+      <img ng-src="{{ link.url }}"
+          alt="{{ link.url }}"
+          class="item"
+          onError="this.onerror=null;this.src='/assets/images/missing.png';">
+      <button type="button" class="btn btn-danger btn-circle remove" ng-click="remove(link)">
+        <i class="fa fa-remove"></i>
+      </button>
     </div>
   </div>
 </section>

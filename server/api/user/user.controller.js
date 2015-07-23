@@ -5,6 +5,7 @@ var Link = require('./link.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var _ = require('lodash');
 
 var validationError = function(res, err) {
   return res.status(422).json(err);
@@ -25,22 +26,24 @@ exports.profile = function(req, res) {
  * Removes a link from an authenticated user.
  */
 exports.remove = function(req, res) {
-  var removed = _.pull(req.user.links, {id: req.params.id});
+  var pulled = req.user.links.pull({_id: req.params.id});
+  if (!pulled) return res.status(500);
   req.user.save(function(err) {
     if (err) return res.status(500).send(err);
-    return res.status(204).send(removed);
+    return res.send('Removed');
   });
 };
 
 /**
- * Change a users password
+ * Adds a link to an authenticated user.
  */
 exports.add = function(req, res) {
-  var newLink = new Link({url: req.body.url});
-  req.user.links.push(newLink);
-  req.user.save(function(err) {
+  var linkCount = req.user.links.length;
+  req.user.links.push(new Link({url: req.body.url}));
+  req.user.save(function(err, user) {
     if (err) return res.status(500).send(err);
-    return res.status(204).send(newLink);
+    var newLink = user.links[linkCount];
+    return res.send(newLink);
   });
 };
 

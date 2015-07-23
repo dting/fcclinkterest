@@ -15,8 +15,7 @@ angular.module('fcclinkterestApp')
       remove: {
         method: 'DELETE',
         params: {
-          controller:'remove',
-          id: '@_url'
+          controller:'remove'
         }
       },
       get: {
