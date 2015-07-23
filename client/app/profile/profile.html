@@ -13,7 +13,8 @@
       <img ng-src="{{ link.url }}"
           alt="{{ link.url }}"
           class="item"
-          onError="this.onerror=null;this.src='/assets/images/missing.png';">
+          onError="this.onerror=null;this.src='/assets/images/missing.png';link.failed=true;"
+          ng-click="openLightboxModal($index)">
     </div>
   </div>
 </section>

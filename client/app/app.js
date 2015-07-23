@@ -6,7 +6,8 @@ angular.module('fcclinkterestApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'masonry'
+  'masonry',
+  'bootstrapLightbox'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
