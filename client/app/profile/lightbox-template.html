@@ -1,0 +1,17 @@
+<div class="modal-body" ng-swipe-left="Lightbox.nextImage()" ng-swipe-right="Lightbox.prevImage()">
+  <!-- close button -->
+  <div class="lightbox-image-container">
+    <!-- video, requires 'videosharing-embed' module -->
+    <div ng-if="Lightbox.showVideo" class="embed-responsive embed-responsive-16by9">
+      <embed-video lightbox-video lightbox-src="{{Lightbox.imageUrl}}" ng-href="{{Lightbox.imageUrl}}" controls="1" showinfo="0" title="0" byline="0" portrait="0" info="0" badge="0" class="embed-responsive-item"></embed-video>
+    </div>
+    <!-- image -->
+    <img ng-if='!Lightbox.showVideo' lightbox-src="{{Lightbox.imageUrl}}" alt="">
+  </div>
+</div>
+<!-- caption -->
+<div class="lightbox-image-caption">
+  <p><a ng-href="{{Lightbox.imageCaption}}" target="_blank">{{Lightbox.imageCaption}}</a></p>
+</div>
+
+<button class="btn close" aria-hidden="true" ng-click="$dismiss()"><i class="fa fa-close"></i></button>

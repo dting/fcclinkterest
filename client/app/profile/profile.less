@@ -1,0 +1,69 @@
+.lightbox-nav {
+  position: relative;
+  margin-bottom: 12px; /* the font-size of .btn-xs */
+  text-align: center;
+  font-size: 0; /* prevent the otherwise inherited font-size and line-height from adding extra space to the bottom of this div */
+}
+
+.lightbox-nav .btn-group {
+  vertical-align: top;
+}
+
+.lightbox-nav .close {
+  /* absolutely position this in order to center the nav buttons */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.lightbox-image-container {
+  position: relative;
+  text-align: center; /* center the image */
+}
+
+/* the caption overlays the top left corner of the image */
+div.lightbox-image-caption {
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  color: #000;
+  font-size: 1.5em;
+  text-align: center;
+  text-shadow: 0.1em 0.1em 0.2em rgba(255, 255, 255, 0.5);
+  p {
+    width: 80%;
+    margin: auto auto;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    a {
+      font-weight: lighter;
+      text-decoration: inherit;
+    }
+  }
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+button.btn.close, button.btn.close:focus {
+  outline: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  float: right;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  padding: 0;
+  text-align: center;
+  border-radius: 50%;
+  background: red;
+  i {
+    color: #FFF;
+  }
+}
